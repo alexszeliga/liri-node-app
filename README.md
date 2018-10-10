@@ -1,2 +1,3 @@
 # liri-node-app
-A language interpretation focused on music movies and bands.
+
+A language interpretation command line app focused on music movies and bands.
