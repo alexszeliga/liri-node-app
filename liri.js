@@ -85,10 +85,12 @@ function concertMode(string) {
             );
             var venueName = venueData.name;
             var venueLocation = `${venueData.city}, ${venueData.country}`;
-            console.log("Next performance info for: " + artistName);
-            console.log("Date: " + showDateTimeFormatted);
-            console.log("Location: " + venueLocation);
-            console.log("Venue name: " + venueName);
+            console.log(`
+            Next performance info for: ${artistName}
+            Date: ${showDateTimeFormatted}
+            Location: ${venueLocation}
+            Venue name: ${venueName}
+            `);
           }
         );
       } else {
@@ -106,18 +108,23 @@ function songMode(string) {
   spotify
     .search({ type: "track", query: string, limit: 1 })
     .then(function(response) {
-      var artistName = response.tracks.items[0].artists[0].name;
-      var songName = response.tracks.items[0].name;
-      var albumName = response.tracks.items[0].album.name;
-      var spotifySongURL = response.tracks.items[0].external_urls.spotify;
-      console.log(
-        `
-        Song Name: ${songName}
-        Artist Name: ${artistName}
-        Album Name: ${albumName}
-        Spotify URL: ${spotifySongURL}
-        `
-      );
+      if (response.tracks.items.length !== 0) {
+        var data = response.tracks.items[0];
+        var artistName = data.artists[0].name;
+        var songName = data.name;
+        var albumName = data.album.name;
+        var spotifySongURL = data.external_urls.spotify;
+        console.log(
+          `
+          Song Name: ${songName}
+          Artist Name: ${artistName}
+          Album Name: ${albumName}
+          Spotify URL: ${spotifySongURL}
+          `
+        );
+      } else {
+        console.log("Unable to locate songs with that title.");
+      }
     })
     .catch(function(err) {
       console.log(err);
