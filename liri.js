@@ -1,5 +1,3 @@
-// clear terminal
-process.stdout.write("\033c");
 // generate operational arguments
 var userModeSelector = process.argv[2];
 var userQueryConcat = "";
@@ -132,14 +130,20 @@ function songMode(string) {
 }
 function movieMode(string) {
   var omdbQueryUrl =
-    "http://www.omdbapi.com/?apikey=82ce97ae&type=movie&s=" + string;
+    "http://www.omdbapi.com/?apikey=" +
+    process.env.OMDB_KEY +
+    "&type=movie&s=" +
+    string;
   request(omdbQueryUrl, (err, res, bod) => {
     if (!err && res.statusCode === 200) {
       var data = JSON.parse(bod);
       if (data.Response !== "False") {
         var imdbID = JSON.parse(bod).Search[0].imdbID;
         request(
-          "http://www.omdbapi.com/?apikey=82ce97ae&i=" + imdbID,
+          "http://www.omdbapi.com/?apikey=" +
+            process.env.OMDB_KEY +
+            "&i=" +
+            imdbID,
           (err, res, bod) => {
             var data = JSON.parse(bod);
             if (!err && res.statusCode === 200) {
@@ -174,8 +178,6 @@ function parseFile() {
   fs.readFile("./random.txt", "utf8", (err, data) => {
     if (!err) {
       var textFileParsed = data.split(",");
-      // console.log(textFileParsed[0], textFileParsed[1]);
-
       executeMode(textFileParsed[0], textFileParsed[1]);
     } else {
       console.log("Error: unable to parse text file");
@@ -197,11 +199,26 @@ function helpMode() {
 
   The second argument in concert-this mode should be the name of a musical performer
   
-  The second argument in spotify-this-song should be a song title (hint: include the artist name as well if you're having trouble getting what you want...or include no second argument at all if you want to go that route.)
+  The second argument in spotify-this-song should be a song title 
+  (hint: include the artist name as well if you're having trouble getting what you want...
+                       or include no second argument at all if you want to go that route.)
   
   The Second argument for movie-this should be the name of a movie
 
   do-what-it-says parses a preprogrammed Spotify search which can be edited/viewed in random.txt
+  
+  ---------------------------------------------------------------------
+
+  This application requires you to provide a .env file in the same folder as this app and contains the following keys:
+
+# Spotify API keys
+
+SPOTIFY_ID=<your spotify api id>
+SPOTIFY_SECRET=<your spotify app secret code>
+
+# OMDB API Key
+
+OMDB_KEY=<omdb api key>
   `);
 }
 executeMode(userModeSelector, userQueryString);
