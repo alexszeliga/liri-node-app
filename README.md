@@ -57,4 +57,14 @@ Replace `Just a Girl` with the name of any song; you can also include the artist
 
 The 'random.txt' file included with this repository is parsed to provide a mode and search string for the app.
 
+To have this app parse the text file, enter the following command:
+
+`node liri do-what-it-says`
+
 random.txt can be updated, replacing `spotify-this-song` with any mode argument and `"I Want It That Way"` with a corresponding search string.
+
+## Help Mode:
+
+Additional help is availabe in the app by using the following command:
+
+`node liri help`
