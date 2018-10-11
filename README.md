@@ -51,7 +51,7 @@ Spotify song info mode is executed by entering the following command on the comm
 
 `node liri spotify-this-song Just a Girl`
 
-Replace `Just a girl` with the name of any song; you can also include the artist name to further hone in the result!
+Replace `Just a Girl` with the name of any song; you can also include the artist name to further hone in the result!
 
 ### Parse text mode:
 
