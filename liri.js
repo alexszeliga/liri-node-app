@@ -135,14 +135,16 @@ function movieMode(string) {
     "http://www.omdbapi.com/?apikey=82ce97ae&type=movie&s=" + string;
   request(omdbQueryUrl, (err, res, bod) => {
     if (!err && res.statusCode === 200) {
-      var imdbID = JSON.parse(bod).Search[0].imdbID;
-      request(
-        "http://www.omdbapi.com/?apikey=82ce97ae&i=" + imdbID,
-        (err, res, bod) => {
-          if (!err && res.statusCode === 200) {
+      var data = JSON.parse(bod);
+      if (data.Response !== "False") {
+        var imdbID = JSON.parse(bod).Search[0].imdbID;
+        request(
+          "http://www.omdbapi.com/?apikey=82ce97ae&i=" + imdbID,
+          (err, res, bod) => {
             var data = JSON.parse(bod);
-            console.log(
-              `
+            if (!err && res.statusCode === 200) {
+              console.log(
+                `
               Movie Name: ${data.Title}
               Release Year: ${data.Year}
               IMDB Rating: ${data.imdbRating}
@@ -156,10 +158,13 @@ function movieMode(string) {
               Plot: ${data.Plot}
               Actors: ${data.Actors}
               `
-            );
+              );
+            }
           }
-        }
-      );
+        );
+      } else {
+        console.log("Your search returned no movies. Please try again.");
+      }
     } else {
       console.log(err);
     }
