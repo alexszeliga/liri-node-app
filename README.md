@@ -24,8 +24,6 @@ You will have to create, then set up an .env file with the following structure:
 
 ![env create](https://raw.githubusercontent.com/alexszeliga/liri-node-app/master/pres-gifs/create-env.gif)
 
-![populate env file](https://raw.githubusercontent.com/alexszeliga/liri-node-app/master/pres-gifs/pop-env.gif)
-
 ```
 # Spotify API keys
 
@@ -36,6 +34,8 @@ SPOTIFY_SECRET=<your spotify app secret code>
 
 OMDB_KEY=<omdb api key>
 ```
+
+![populate env file](https://raw.githubusercontent.com/alexszeliga/liri-node-app/master/pres-gifs/pop-env.gif)
 
 # Operation Modes:
 
