@@ -22,6 +22,7 @@ var spotify = new Spotify(keys.spotify);
 
 // operation modes
 function executeMode(mode, string) {
+  // the mode is set as the first argument
   switch (mode) {
     case "concert-this":
       concertMode(string);
@@ -38,13 +39,16 @@ function executeMode(mode, string) {
     case "help":
       helpMode();
       break;
+    // Input validation failed, provide feedback
     default:
+      // no mode provided
       if (mode === undefined) {
         console.log(
           `You must enter an argument. Try typing "node liri help" into the command line for more info.`
         );
         break;
       }
+      // bad mode provided
       console.log(`"${mode}" is not a valid converstaion mode.`);
       break;
   }
@@ -76,6 +80,7 @@ function concertMode(string) {
               );
               return;
             }
+
             var venueData = allEventData[0].venue;
             var showDateTimeRaw = allEventData[0].datetime;
             var showDateTimeFormatted = moment(showDateTimeRaw).format(

@@ -12,7 +12,13 @@ liri is a Node.js app, so it can only be launched in the command line after inst
 
 [Install Node](https://nodejs.org/en/download/)
 
-Once this repository is cloned locally and node is installed, you will have to set up an .env file with the following structure:
+Once this repository is cloned locally and node is installed, run the following command to install necessary packages.
+
+`npm install`
+
+![clone and npm install](./pres-gif/clone-repo.gif)
+
+You will have to set up an .env file with the following structure:
 
 ```
 # Spotify API keys
@@ -26,8 +32,6 @@ OMDB_KEY=<omdb api key>
 ```
 
 The following command needs to be sent to the command line before this app will function:
-
-`npm install`
 
 # Operation Modes:
 
