@@ -14,11 +14,17 @@ liri is a Node.js app, so it can only be launched in the command line after inst
 
 Once this repository is cloned locally and node is installed, run the following command to install necessary packages.
 
+![clone](https://raw.githubusercontent.com/alexszeliga/liri-node-app/master/pres-gifs/clone-repo.gif)
+
 `npm install`
 
-![clone and npm install](./pres-gif/clone-repo.gif)
+![npm install](https://raw.githubusercontent.com/alexszeliga/liri-node-app/master/pres-gifs/npm-install.gif)
 
-You will have to set up an .env file with the following structure:
+You will have to create, then set up an .env file with the following structure:
+
+![env create](https://raw.githubusercontent.com/alexszeliga/liri-node-app/master/pres-gifs/create-env.gif)
+
+![populate env file](https://raw.githubusercontent.com/alexszeliga/liri-node-app/master/pres-gifs/pop-env.gif)
 
 ```
 # Spotify API keys
@@ -31,11 +37,11 @@ SPOTIFY_SECRET=<your spotify app secret code>
 OMDB_KEY=<omdb api key>
 ```
 
-The following command needs to be sent to the command line before this app will function:
-
 # Operation Modes:
 
 At this time, liri has three main modes and one supplimental mode.
+
+![operation modes](https://github.com/alexszeliga/liri-node-app/blob/master/pres-gifs/modes.gif)
 
 ### Movie Info Mode:
 
