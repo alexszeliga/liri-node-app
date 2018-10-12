@@ -6,7 +6,7 @@ A language interpretation command line app focused on music movies and bands. It
 
 liri takes in commands via the command line and spits out useful information.
 
-# How to interact:
+# Get set up!
 
 liri is a Node.js app, so it can only be launched in the command line after installing Node.
 
